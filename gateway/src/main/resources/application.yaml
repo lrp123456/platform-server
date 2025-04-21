@@ -1,4 +1,19 @@
 spring:
   application:
     name: gateway
-    
+  profiles:
+    include:
+      - gateway
+  security:
+    oauth2:
+      client:
+        registration:
+          okte:
+            client-id: okte
+            client-secret: okte
+            scope: okte
+            authorization-grant-type: authorization_code
+            redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
+
+server:
+  port: 80
